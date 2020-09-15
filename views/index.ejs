@@ -30,13 +30,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <a href="https://www.google.com/">https://www.google.com/</a>
-                    </td>
-                    <td><a href="">12345</a></td>
-                    <td>123</td>
-                </tr>
+                <%for(var i=0;i<shortUrls.length;i++){%>
+                    <tr>
+                        <td>
+                            <a href="<%=shortUrls[i].full%>"><%=shortUrls[i].full%></a>
+                        </td>
+                        <td>
+                            <a href="/<%=shortUrls[i].short%>"><%=shortUrls[i].short%></a>
+                        </td>
+                        <td>
+                            <%=shortUrls[i].clicks%>
+                        </td>
+                    </tr>
+                <%}%>
             </tbody>
         </table>
     </div>
