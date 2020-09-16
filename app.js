@@ -8,7 +8,9 @@ app.set('view engine','ejs');
 app.use(body.urlencoded({extended:true}));
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb+srv://rt1301:radhavilla1301@cluster0.hc7tc.mongodb.net/ShortUrl?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect("mongodb+srv://rt1301:radhavilla1301@cluster0.hc7tc.mongodb.net/ShortUrl?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(()=>{
+    console.log("connected to DB");
+}).catch((err)=>{console.log(err)});
 
 // Root route
 app.get("/",async (req, res)=>{
@@ -20,7 +22,8 @@ app.post("/shortUrls",async (req, res)=>{
     res.redirect("/");
 });
 // Redirecting to the actual webpage
-app.get("/:url",(req, res)=>{
+app.get("/s/:url",(req, res)=>{
+    console.log(req.params.url);
     Url.findOne({short:req.params.url},(err,foundUrl)=>{
         if(err)
         {
@@ -31,6 +34,7 @@ app.get("/:url",(req, res)=>{
             foundUrl.clicks++;
             foundUrl.save();
             res.redirect(foundUrl.full);
+            
         }
     })
 })

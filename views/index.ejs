@@ -36,11 +36,13 @@
                             <a href="<%=shortUrls[i].full%>"><%=shortUrls[i].full%></a>
                         </td>
                         <td>
-                            <a href="/<%=shortUrls[i].short%>"><%=shortUrls[i].short%></a>
+                            <a href="/s/<%=shortUrls[i].short%>"><%=shortUrls[i].short%></a>
                         </td>
-                        <td>
-                            <%=shortUrls[i].clicks%>
-                        </td>
+                        <%if(shortUrls[i].clicks!== null){%>
+                            <td>
+                                <%=shortUrls[i].clicks%>
+                            </td>
+                        <%}%>
                     </tr>
                 <%}%>
             </tbody>
