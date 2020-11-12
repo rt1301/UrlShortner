@@ -8,7 +8,7 @@ app.set('view engine','ejs');
 app.use(body.urlencoded({extended:true}));
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb+srv://rt1301:radhavilla1301@cluster0.hc7tc.mongodb.net/ShortUrl?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(()=>{
+mongoose.connect("mongodb://localhost:27017/urlShortner",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(()=>{
     console.log("connected to DB");
 }).catch((err)=>{console.log(err)});
 
